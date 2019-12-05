@@ -1,4 +1,6 @@
 <?php
+//this works for a project setup in the developers console with the correct calendar API attached to it and a service account activated
+//for that project
 //simple script to connect, edit, update your own google calendar (v3) or calendars that you have access with service account key
 //connect+auth using service account key
 require __DIR__ . '/vendor/autoload.php';
@@ -14,7 +16,7 @@ function getClient() {
 // Get the API client and construct the service object.
 $client = getClient();
 $service = new Google_Service_Calendar($client);
-//var_dump ($client); UNCOMMENT AND search for this string: 'client_email' => string 'user@daily-cal-cntm.iam.gserviceaccount.com' (length=48)
+//var_dump ($client); UNCOMMENT AND search for this string: 'client_email' => string 'user@app-name.iam.gserviceaccount.com' (length=48)
 //(user being your service account name that you choose while creating the service key 
 //go to google calendar and share your calendar with this email address giving editing rigts! 
 //ATTENTION: insert, update, delete will not work until you do this !!!! 
@@ -50,8 +52,8 @@ if (empty($events)) {
 $event = new Google_Service_Calendar_Event(array(
   'summary' => 'My first event inserted by me',
   //'location' => '800 Howard St., San Francisco, CA 94103',
-  'description' => 'Examen ISCIR grupa plii mele',
-  'id' => '201912021440iscir',
+  'description' => 'Somthing in the description',
+  'id' => 'giveauniqueid', //see developers page for more info
   'start' => array(
     'dateTime' => '2019-12-06T13:00:00',
     'timeZone' => 'Europe/Bucharest',
